@@ -1,19 +1,25 @@
 package com.tomlau6.movies;
 
-import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.Document;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.bson.types.ObjectId;
+import org.springframework.data.mongodb.core.mapping.Document;
 
-@Document(collection ="review")
+import java.time.LocalDateTime;
+
+@Document(collection = "reviews")
 @Data
-@AllArgsConstructor
-@NoArgsConstructor
+@AllArgsConstructor @NoArgsConstructor
 public class Review {
-    @Id
-    private Object id;
-
+    private ObjectId id;
     private String body;
+    private LocalDateTime created;
+    private LocalDateTime updated;
+
+    public Review(String body) {
+        this.body = body;
+       
+    }
 }
